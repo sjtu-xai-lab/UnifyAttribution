@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNN Research Paper</title>
+    <title>Unifying Fourteen Attribution Methods</title>
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -27,25 +27,21 @@
 <header>
     <h1 class="title is-1 publication-title has-text-centered">Unifying Fourteen Post-Hoc Attribution Methods With Taylor Interactions</h1>
     <p>
-        <a class="team-member" href="www.JunpengZhang.com">Huiqi Deng</a>,
-        <a class="team-member" href="www.QingLi.com">Na Zou</a>,
-        <a class="team-member" href="www.LiangLin.com">Mengnan Du</a>,
-        <a class="team-member" href="www.QuanshiZhang.com">Weifu Chen</a>
-        <a class="team-member" href="www.QuanshiZhang.com">Guocan Feng</a>
-        <a class="team-member" href="www.QuanshiZhang.com">Ziwei Yang</a>
-        <a class="team-member" href="www.QuanshiZhang.com"> Zheyang Li</a>
-        <a class="team-member" href="www.QuanshiZhang.com">and Quanshi Zhang</a>
+        <a class="team-member" href="www.JunpengZhang.com">Huiqi Deng</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.QingLi.com">Na Zou</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.LiangLin.com">Mengnan Du</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.QuanshiZhang.com">Weifu Chen</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.QuanshiZhang.com">Guocan Feng</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.QuanshiZhang.com">Ziwei Yang</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.QuanshiZhang.com">Zheyang Li</a>  &nbsp;&nbsp;&nbsp;
+        <a class="team-member" href="www.QuanshiZhang.com">Quanshi Zhang</a><sup>1†</sup>
     </p>
     <br>
     <p>
         († Correspondence)
     </p>
-    <!--<p><a class="team-member" href="#"><sup>1</sup>Shanghai Jiao Tong University </a>
-        <br><a class="team-member" href="#"><sup>2</sup> Eastern Institute of Technology, Ningbo</a>
-        <br><a class="team-member" href="#"> <sup>3</sup> Sun Yat-Sen University</a>
-    </p>-->
     <br>
-    <p>IEEE Transactions on Pattern Analysis and Machine Intelligence (IEEE TPAMI), Volume: 46, Issue 7, Pages 4625 - 4640, 2024.</p>
+    <p>IEEE Transactions on Pattern Analysis and Machine Intelligence (IEEE TPAMI), 2024</p>
 </header>
 
 <div class="container">
@@ -54,10 +50,10 @@
     <div class="content has-text-justified">
         <p>Although numerous attribution methods have been proposed in recent years, most of them are built upon different heuristics, lacking a unified theoretical foundation. To this end, in this work,</p>
         <p>
-            <span>（1）</span>We propose a unified attribution framework from the interaction perspective, which unifies 14 mainstream attribution methods. This unified framework reveals <span>the (common) mechanism</span> of these different attribution methods, i.e., the fourteen attribution methods can all be represented as a weighted allocation of the interaction effects between input variables. The <span>essential difference between different methods</span> lies in the different weights of allocating interaction effects.
+            <span>1. </span> We propose a unified attribution framework from the interaction perspective, which unifies 14 mainstream attribution methods. This unified framework reveals <span>the (common) mechanism</span> of these different attribution methods, i.e., the fourteen attribution methods can all be represented as a weighted allocation of the interaction effects between input variables. The <span>essential difference between different methods</span> lies in the different weights of allocating interaction effects.
         </p>
         <p>
-            <span>（2）</span>Based on the unified framework, we propose three fundamental principles as a sanity check evaluation for the faithfulness of an attribution method, which uniformly compares different attribution methods
+            <span>2. </span> Based on the unified framework, we propose three fundamental principles as a sanity check evaluation for the faithfulness of an attribution method, which uniformly compares different attribution methods
 
         </p>
 
@@ -71,7 +67,7 @@
 
     <hr>
 
-    <h2>Preliminary: Interactions and interaction effects</h2>
+    <h2>Preliminary: Interactions and Interaction Effects</h2>
     <div class="content has-text-justified">
         <div class="latex">
             In fact, the DNN inference does not treat each individual input variables independently, but also usually encodes the interaction relationship among input variables, which causes a numerical effect on the network output (called interaction effects). As shown in Figure 2 (left), beyond the independent effect of each object, the collaboration of the three objects {blackboard, teacher, student} makes an interaction effect $J(S)$ on the output $Y$, and the interaction effect increases the classification confidence by $J(S)$.
@@ -97,13 +93,13 @@
 
     <hr>
     <h2>
-        Unifying Fourteen post-hoc attribution methods with interaction effects
+        Unifying Fourteen Post-hoc Attribution Methods with Interaction Effects
     </h2>
     <div class="content ">
 
         <div class="latex">
             We propose a unified attribution framework, which formulates the attribution score $a_i$ of each specific input variable $x_i$ as a weighted allocation from all independent effects and all interaction effects to the variable $x_i$, i.e.,
-            $$a_i = \sum_{j \in N} w_{i,j} \psi(j) + \sum_{S \subseteq N, |S|>1} w_{i,S} J(S)$$
+            $$a_i = \sum_{j \in N} w_{i,j} \ \psi(j) + \sum_{S \subseteq N, |S|>1} w_{i,S} \ J(S)$$
             where $w_{i,j}$ denotes the ratio of $j$’s independent effect being allocated to the attribution score of the variable $i$, and $w_{i,S}$ denotes the ratio of the interaction effect $J(S)$ being allocated to the attribution score of variable $i$.
         </div>
 
@@ -117,11 +113,11 @@
             These 14 unified methods have covered many different types of attribution methods that are designed based on fully different heuristics, including gradient-based attribution methods (Gradient*Input, Grad-CAM, Integrated Gradients, and Expected Gradients), back-propagation attribution methods (LRP-$\epsilon$, LRP-$\alpha\beta$, Deep Taylor, DeepLIFT Rescale, DeepLIFT RevealCancel, and DeepShap), and perturbation/occlusion-based attribution methods (Occlusion-1, Occlusion-patch, Prediction Difference, and Shapley value). We believe that a unified framework that covers various types of attribution methods is more likely to reflect the essential mechanism in generating attributions.
         </div>
 
-        <img src="static/img/3/table1.png" alt="">
+        <img src="static/img/3/table1.png" alt="" width="850px">
 
         <p class="latex img-title">
             Table 1. Fourteen attribution methods are unified into the same paradigm of allocating interaction effects.
-            (Note that the notation $\phi(\kappa)$ and $I(\kappa)$ refer to the Taylor independent effect and Taylor interaction effect, which are the subdivisions of the above independent effect $\psi(j)$ and interaction effect $J(S)$ respectively.)
+            (Note that the notation $\phi(\kappa)$ and $I(\kappa)$ refer to the Taylor independent effect and Taylor interaction effect, which are the subdivisions of the above independent effect $\psi(j)$ and interaction effect $J(S)$ respectively)
         </p>
 
     </div>
@@ -132,21 +128,21 @@
     <div class="content has-text-justified">
         <p>Based on the unified framework, we develop three theoretical principles that a faithful attribution explanation is supposed to follow (Please refer to our paper [1] for a formalized description of these principles):</p>
         <div class="latex">
-            <span style="font-weight: bold !important;">1. approximation error</span>, i.e., faithful attributions are expected to cover almost all independent effects and all interaction effects of the DNN, and leave an ignorable residual term $\epsilon_K$ not been explained.
+            <span style="font-weight: bold !important;">1. Low approximation error</span>, i.e., faithful attributions are expected to cover almost all independent effects and all interaction effects of the DNN, and leave an ignorable residual term $\epsilon_K$ not been explained.
         </div>
         <br>
         <div class="latex">
-            <span style="font-weight: bold !important;">2.Avoiding allocation to unrelated variables</span>, i.e., the independent effect $\psi(i)$ of each specific input variable $i$ is supposed to be allocated only to the variable $i$, rather than being allocated to other variables.
-            $$\forall j \in N \& j \neq i, w_{j,i} = 0$$
+            <span style="font-weight: bold !important;">2. Avoiding allocation to unrelated variables</span>, i.e., the independent effect $\psi(i)$ of each specific input variable $i$ is supposed to be allocated only to the variable $i$, rather than being allocated to other variables.
+            $$\forall j \in N  \ \& \ j \neq i, \quad w_{j,i} = 0$$
             Besides, each interaction effect among variables in a specific subset $S$ is supposed to exclusively be allocated to variables in $S$, without being allocated to any other unrelated variables $j \notin S$.
-            $$\forall j \notin S, w_{j,S}=0$$
+            $$\forall j \notin S, \quad w_{j,S}=0$$
         </div>
         <br>
 
         <div class="latex">
-            <span style="font-weight: bold !important;">3.Complete allocation</span>, i.e., Each independent effect is supposed to completely be allocated to all variables. Also, each interaction effect should be completely allocated to all variables.
-            $$\forall j \in N,  \sum_{i \in N} w_{i,j} \cdot \psi(j) = \psi(j)$$
-            $$\forall S \subseteq N, \sum_{i \in N} w_{i,S} \cdot J(S) = J(S)$$
+            <span style="font-weight: bold !important;">3. Complete allocation</span>, i.e., Each independent effect is supposed to completely be allocated to all variables. Also, each interaction effect should be completely allocated to all variables.
+            $$\forall j \in N,  \quad \sum_{i \in N} w_{i,j} \cdot \psi(j) = \psi(j)$$
+            $$\forall S \subseteq N, \quad \sum_{i \in N} w_{i,S} \cdot J(S) = J(S)$$
             These theoretical principles can be served as a <span style="font-weight: bold !important;">sanity check evaluation</span> of attribution methods. Then, we use these principles to evaluate the aforementioned 14 attribution methods. Table 2 shows that seven attribution methods do not satisfy all these basic principles.
         </div>
 
@@ -161,13 +157,26 @@
 
     </div>
 
+    <h2>BibTeX</h2>
+    <pre><code>
+    @ARTICLE{deng2024unifying,
+          author={Deng, Huiqi and Zou, Na and Du, Mengnan and Chen, Weifu and Feng, Guocan and Yang, Ziwei and Li, Zheyang and Zhang, Quanshi},
+          journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+          title={Unifying Fourteen Post-Hoc Attribution Methods With Taylor Interactions},
+          year={2024},
+          volume={46},
+          number={7},
+          pages={4625-4640},
+          doi={10.1109/TPAMI.2024.3358410}
+    }
+    </code></pre>
 
 
 
 </div>
 
 <footer>
-    &copy; 2024 DNN Research. All rights reserved.
+    &copy; 2024 Unify Attribution. All rights reserved.
 </footer>
 
 
